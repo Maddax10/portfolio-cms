@@ -1,34 +1,33 @@
 <script setup lang="ts">
-import { useLoginStore } from "@/stores/login";
-import { log } from "console";
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+  import { useUsersStore } from "@/stores/users";
+  import { ref } from "vue";
+  import { useRouter } from "vue-router";
 
-const router = useRouter();
-const loginStore = useLoginStore();
-loginStore.initFromStorage();
+  const router = useRouter();
+  const userStore = useUsersStore();
+  userStore.initUser();
 
-const mail = ref("");
-const password = ref("");
-const user = ref(null);
+  const mail = ref("");
+  const password = ref("");
+  const user = ref(null);
 
-const login = async () => {
-  const credentials = {
-    mail: mail.value,
-    password: password.value,
+  const login = async () => {
+    const credentials = {
+      mail: mail.value,
+      password: password.value,
+    };
+
+    user.value = await userStore.login(credentials);
+    if (user.value != null) router.push("/manage-projects");
   };
 
-  user.value = await loginStore.login(credentials);
-  if (user.value != null) router.push("/manage-projects");
-};
+  /*================================*/
+  //Vérification si l'utilisateur est connecté
+  /*================================*/
 
-/*================================*/
-//Vérification si l'utilisateur est connecté
-/*================================*/
-
-const token = loginStore.getToken;
-const verifToken = token === null || token === undefined;
-if (!verifToken) router.push("/manage-projects");
+  const token = userStore.getToken;
+  const verifToken = token === null || token === undefined;
+  if (!verifToken) router.push("/manage-projects");
 </script>
 
 <template>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useLoginStore } from "@/stores/login";
+  import { useUsersStore } from "@/stores/users";
 
-const loginStore = useLoginStore();
+  const loginStore = useUsersStore();
 
-const logout = () => {
-  loginStore.logout();
-};
+  const logout = () => {
+    loginStore.logout();
+  };
 </script>
 
 <template>
