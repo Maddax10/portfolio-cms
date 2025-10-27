@@ -8,8 +8,18 @@ export const useLoginStore = defineStore("loginStore", {
     user: null as User | null,
     loading: false as boolean,
   }),
-  getters: {},
+  getters: {
+    getUser: (state) => state.user,
+  },
   actions: {
+    setToken(token: string | null) {
+      this.token = token;
+      if (token) localStorage.setItem("token", token);
+      else localStorage.removeItem("token");
+    },
+    setUser(user: User | null) {
+      this.user = user;
+    },
     async login(credentials: { mail: string; password: string }) {
       this.loading = true;
       try {
@@ -19,14 +29,15 @@ export const useLoginStore = defineStore("loginStore", {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(credentials),
         });
-        console.log(credentials);
 
         const dataLogin = await loginResp.json();
-        console.log("dataLogin", await dataLogin);
 
-        if (!loginResp.ok) return;
+        if (!loginResp.ok) throw new Error(dataLogin.error);
 
-        return true;
+        this.setUser(dataLogin);
+        this.setToken(dataLogin.token);
+
+        return dataLogin;
       } catch (err) {
         throw err;
       } finally {
@@ -40,14 +51,6 @@ export const useLoginStore = defineStore("loginStore", {
     initFromStorage() {
       const token = localStorage.getItem("token");
       if (token && this.token != token) this.token = token;
-    },
-    setToken(token: string | null) {
-      this.token = token;
-      if (token) localStorage.setItem("token", token);
-      else localStorage.removeItem("token");
-    },
-    setUser(user: User | null) {
-      this.user = user;
     },
   },
 });

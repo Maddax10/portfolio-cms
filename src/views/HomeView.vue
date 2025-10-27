@@ -1,7 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from "vue-router";
 
-<template>
+const router = useRouter();
 
-</template>
+router.push("/login");
+</script>
+
+<template></template>
 
 <style scoped></style>
