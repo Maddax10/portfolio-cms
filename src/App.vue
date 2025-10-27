@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import NavbarC from "./components/NavbarC.vue";
+  import NavbarC from "./components/NavbarC.vue";
+  import { useUsersStore } from "./stores/users";
+  const loginStore = useUsersStore();
+  loginStore.initUser();
 </script>
 
 <template>
@@ -8,5 +11,5 @@ import NavbarC from "./components/NavbarC.vue";
 </template>
 
 <style>
-@import "./styles/main.scss";
+  @import "./styles/main.scss";
 </style>
