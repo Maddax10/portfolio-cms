@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  background-color: blue;
+  justify-content: center;
+  &__link {
+    background-color: red;
+    font-weight: 900;
+    text-decoration: none;
+    color: black;
+    padding: 32px;
+    border-radius: 16px;
+  }
+}
