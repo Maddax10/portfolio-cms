@@ -10,6 +10,7 @@ export const useLoginStore = defineStore("loginStore", {
   }),
   getters: {
     getUser: (state) => state.user,
+    getToken: (state) => state.token,
   },
   actions: {
     setToken(token: string | null) {
@@ -47,6 +48,7 @@ export const useLoginStore = defineStore("loginStore", {
     logout() {
       this.setToken(null);
       this.setUser(null);
+      localStorage.removeItem("token");
     },
     initFromStorage() {
       const token = localStorage.getItem("token");

@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useLoginStore } from "@/stores/login";
+import { log } from "console";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 const loginStore = useLoginStore();
+loginStore.initFromStorage();
 
 const mail = ref("");
 const password = ref("");
@@ -17,13 +19,20 @@ const login = async () => {
   };
 
   user.value = await loginStore.login(credentials);
-  console.log(user.value);
   if (user.value != null) router.push("/manage-projects");
 };
+
+/*================================*/
+//Vérification si l'utilisateur est connecté
+/*================================*/
+
+const token = loginStore.getToken;
+const verifToken = token === null || token === undefined;
+if (!verifToken) router.push("/manage-projects");
 </script>
 
 <template>
-  <form class="login" v-if="user === null">
+  <form class="login" v-if="verifToken">
     <label for="" class="login__label">Email</label>
     <input type="mail" class="login__input" v-model="mail" />
     <label for="" class="login__label">Password</label>

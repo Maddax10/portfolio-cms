@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import NavbarC from "./components/NavbarC.vue";
+import { useLoginStore } from "./stores/login";
+const loginStore = useLoginStore();
+loginStore.initFromStorage();
 </script>
 
 <template>
