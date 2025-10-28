@@ -8,5 +8,21 @@ export const useProjectsStore = defineStore("projectsStore", {
     loading: false as Boolean,
   }),
   getters: {},
-  actions: {},
+  actions: {
+    setProjects(projects: Project[]) {
+      if (this.projects != projects || projects != null) this.projects = projects;
+    },
+    async initProjects() {
+      try {
+        const projectsResp = await fetch(`${API_URL}/projects/all`);
+
+        const projectsData = await projectsResp.json();
+
+        console.log(projectsData);
+        this.setProjects(projectsData);
+      } catch (e) {
+        throw e;
+      }
+    },
+  },
 });
