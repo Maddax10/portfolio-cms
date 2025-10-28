@@ -1,0 +1,25 @@
+.projects {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 32px;
+  &__title {
+    font-size: 48px;
+    font-weight: 900;
+    text-align: center;
+    width: 100%;
+    padding: 16px;
+
+    //[START] linear-gradient sur texte
+    background: linear-gradient(135deg, $sunrise 50%, $darkersunrise);
+    -webkit-background-clip: text; /* Safari/Chrome */
+    background-clip: text; /* Standard */
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    //[END] linear-gradient sur texte
+  }
+  &__list {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 16px;
+  }
+}

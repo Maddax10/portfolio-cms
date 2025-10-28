@@ -1,3 +1,6 @@
 @use "./_variables" as *;
 @import "_normalize.scss";
+@import "app.scss";
 @import "navbar.scss";
+@import "./projects/project.scss";
+@import "./projects/projectC.scss";

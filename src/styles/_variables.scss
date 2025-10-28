@@ -1,10 +1,11 @@
-@use 'sass:color';
+@use "sass:color";
 
 $black: black;
 $white: white;
 $white60op: color.scale($white, $alpha: -60%);
 $white90op: color.scale($white, $alpha: -90%);
 $black60op: color.scale($black, $alpha: -60%);
+$black40op: color.scale($black, $alpha: -40%);
 $darkGray: color.adjust($black, $lightness: 5%);
 $lightGray: color.adjust($black, $lightness: 15%);
 $lighterGray: color.adjust($black, $lightness: 25%);
@@ -13,6 +14,8 @@ $red: red;
 $red90op: color.scale($red, $alpha: -90%);
 
 $sunrise: #ffa600;
+$darksunrise: color.adjust($sunrise, $lightness: -15%);
+$darkersunrise: color.adjust($sunrise, $lightness: -30%);
 
 $transitionTime: 0.3s;
 $doubleTransitionTime: calc($transitionTime * 2);
