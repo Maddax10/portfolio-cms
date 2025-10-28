@@ -6,7 +6,9 @@ $white: white;
 $L_black_5: color.adjust($black, $lightness: 5%);
 $L_black_10: color.adjust($black, $lightness: 10%);
 $L_black_15: color.adjust($black, $lightness: 15%);
+$L_black_20: color.adjust($black, $lightness: 20%);
 $L_black_25: color.adjust($black, $lightness: 25%);
+$L_black_30: color.adjust($black, $lightness: 30%);
 $L_black_50: color.adjust($black, $lightness: 50%);
 $L_black_70: color.adjust($black, $lightness: 70%);
 //Opacity white
@@ -24,10 +26,15 @@ $red: red;
 $OP_red_90: color.scale($red, $alpha: -90%);
 
 $sunrise: #ffa600;
-$darksunrise_10: color.adjust($sunrise, $lightness: -5%);
+$darksunrise_10: color.adjust($sunrise, $lightness: -10%);
 $darksunrise_15: color.adjust($sunrise, $lightness: -15%);
+$darksunrise_20: color.adjust($sunrise, $lightness: -20%);
 $darksunrise_30: color.adjust($sunrise, $lightness: -30%);
+$darksunrise_40: color.adjust($sunrise, $lightness: -40%);
 
+$OP_sunrise_10: color.scale($sunrise, $alpha: -10%);
+$OP_sunrise_20: color.scale($sunrise, $alpha: -20%);
+$OP_sunrise_30: color.scale($sunrise, $alpha: -30%);
 $OP_sunrise_50: color.scale($sunrise, $alpha: -50%);
 $OP_sunrise_90: color.scale($sunrise, $alpha: -90%);
 $OP_sunrise_95: color.scale($sunrise, $alpha: -95%);
