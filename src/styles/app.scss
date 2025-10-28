@@ -1,7 +1,7 @@
 body {
   font-family: "Raleway", sans-serif;
-  background-color: $lightGray;
+  background: linear-gradient(135deg, $L_black_10, $L_black_5);
   width: 100%;
-  height: 100dvh;
-  padding-block-start: 90px;
+  height: 100%;
+  padding-block: $navHeight;
 }

@@ -3,9 +3,9 @@
   top: 0;
   width: 100%;
   display: flex;
-  background-color: $black40op;
-  backdrop-filter: blur(16px);
-  box-shadow: 0 0 16px 0 $black40op;
+  background: linear-gradient(135deg, $OP_black_20 60%, $OP_sunrise_90 100%);
+  box-shadow: 0 0 30px 0 $black;
+  backdrop-filter: blur(10px);
   justify-content: end;
   padding: 16px;
   &__role {
@@ -17,7 +17,7 @@
   }
   &__link {
     transition: background 0.35s ease-out;
-    background: linear-gradient(135deg, $sunrise, $darksunrise);
+    background: linear-gradient(135deg, $sunrise, $darksunrise_15);
 
     font-weight: 900;
     text-decoration: none;
@@ -25,7 +25,7 @@
     padding: 16px 12px;
     border-radius: 16px;
     &:hover {
-      background: linear-gradient(135deg, $sunrise 100%, $darkersunrise);
+      background: linear-gradient(135deg, $sunrise 100%, $darksunrise_15);
     }
   }
 }

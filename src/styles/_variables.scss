@@ -2,25 +2,40 @@
 
 $black: black;
 $white: white;
-$white60op: color.scale($white, $alpha: -60%);
-$white90op: color.scale($white, $alpha: -90%);
-$black60op: color.scale($black, $alpha: -60%);
-$black40op: color.scale($black, $alpha: -40%);
-$darkGray: color.adjust($black, $lightness: 5%);
-$lightGray: color.adjust($black, $lightness: 15%);
-$lighterGray: color.adjust($black, $lightness: 25%);
+//Lighter Black
+$L_black_5: color.adjust($black, $lightness: 5%);
+$L_black_10: color.adjust($black, $lightness: 10%);
+$L_black_15: color.adjust($black, $lightness: 15%);
+$L_black_25: color.adjust($black, $lightness: 25%);
+$L_black_50: color.adjust($black, $lightness: 50%);
+$L_black_70: color.adjust($black, $lightness: 70%);
+//Opacity white
+$OP_white_10: color.scale($white, $alpha: -10%);
+$OP_white_60: color.scale($white, $alpha: -60%);
+$OP_white_90: color.scale($white, $alpha: -90%);
+//Opacity black
+$OP_black_20: color.scale($black, $alpha: -20%);
+$OP_black_40: color.scale($black, $alpha: -40%);
+$OP_black_60: color.scale($black, $alpha: -60%);
+$OP_black_80: color.scale($black, $alpha: -80%);
+$OP_black_90: color.scale($black, $alpha: -90%);
 
 $red: red;
-$red90op: color.scale($red, $alpha: -90%);
+$OP_red_90: color.scale($red, $alpha: -90%);
 
 $sunrise: #ffa600;
-$darksunrise: color.adjust($sunrise, $lightness: -15%);
-$darkersunrise: color.adjust($sunrise, $lightness: -30%);
+$darksunrise_10: color.adjust($sunrise, $lightness: -5%);
+$darksunrise_15: color.adjust($sunrise, $lightness: -15%);
+$darksunrise_30: color.adjust($sunrise, $lightness: -30%);
+
+$OP_sunrise_50: color.scale($sunrise, $alpha: -50%);
+$OP_sunrise_90: color.scale($sunrise, $alpha: -90%);
+$OP_sunrise_95: color.scale($sunrise, $alpha: -95%);
 
 $transitionTime: 0.3s;
 $doubleTransitionTime: calc($transitionTime * 2);
 $mobile: 800px;
-$navHeight: 120px;
+$navHeight: 90px;
 $navHeightMobile: 80px;
 $skillsPadding: 16px;
 $skillsGap: 8px;
