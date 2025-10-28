@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import NavbarC from "./components/NavbarC.vue";
+  import NavbarC from "@/components/NavbarC.vue";
   import { useUsersStore } from "./stores/users";
   import { useProjectsStore } from "./stores/projects";
   const loginStore = useUsersStore();
