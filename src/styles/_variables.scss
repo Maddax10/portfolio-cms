@@ -17,6 +17,7 @@ $L_black_60: color.adjust($black, $lightness: 60%);
 $L_black_70: color.adjust($black, $lightness: 70%);
 $L_black_80: color.adjust($black, $lightness: 80%);
 $L_black_90: color.adjust($black, $lightness: 90%);
+$L_black_100: color.adjust($black, $lightness: 100%);
 //Opacity white
 $OP_white_10: color.scale($white, $alpha: -10%);
 $OP_white_20: color.scale($white, $alpha: -20%);

@@ -1,5 +1,6 @@
 @use "normalize";
-@use "app";
+@use "index";
 @use "navbar";
+@use "./login";
 @use "./projects/project";
 @use "./projects/projectC";
