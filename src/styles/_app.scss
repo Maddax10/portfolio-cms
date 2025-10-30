@@ -2,8 +2,10 @@
 body {
   font-family: "Raleway", sans-serif;
   background: linear-gradient(135deg, $OP_black_10 50%, $OP_black_20 100%);
+  background-position: center;
+  background-attachment: fixed;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   padding-block: $navHeight;
 }
 
