@@ -17,3 +17,22 @@ input {
   color: $OP_white_10;
   border: none;
 }
+button,
+.button {
+  transition: all $transitionTime ease-out;
+
+  border-radius: 12px;
+  corner-shape: squircle;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 900;
+  border: none;
+  background: linear-gradient(135deg, $L_black_50, $L_black_20);
+  text-decoration: none;
+
+  &:hover {
+    transition: border-radius $transitionTime;
+    background: linear-gradient(135deg, $L_black_70, $L_black_40);
+    border-radius: 32px;
+  }
+}

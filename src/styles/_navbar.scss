@@ -18,14 +18,11 @@
     padding: 16px;
   }
   &__link {
-    transition: all 0.1s ease-out;
     background: linear-gradient(135deg, $OP_black_30, $OP_black_70);
 
     font-weight: 900;
-    text-decoration: none;
     color: $sunrise;
     padding: 16px 12px;
-    border-radius: 16px;
     corner-shape: squircle;
     &:hover {
       border-radius: 32px;
