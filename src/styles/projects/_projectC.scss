@@ -102,17 +102,39 @@
     width: 32px;
   }
   &__sendButton {
-    font-family: "Raleway", sans-serif;
-    color: $black;
-    background: linear-gradient(135deg, $sunrise, $OP_red_70);
-    font-size: 18px;
+    transition: all $transitionTime;
+    margin-block: 32px;
+    font-size: 16px;
+    overflow: hidden;
+    position: relative;
     width: fit-content;
     display: flex;
     align-self: center;
-    margin: 16px;
-    cursor: pointer;
+    //[START] linear-gradient sur texte
+    background: linear-gradient(135deg, $sunrise, $red);
+    -webkit-background-clip: text; /* Safari/Chrome */
+    background-clip: text; /* Standard */
+    -webkit-text-fill-color: transparent;
+    //[END] linear-gradient sur texte
+
+    &::before {
+      content: "Modifier";
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      inset: 0;
+      background: linear-gradient(135deg, $red, $sunrise);
+      opacity: 1; // caché par défaut
+      transition: opacity $transitionTime ease;
+      pointer-events: none;
+      -webkit-text-fill-color: black;
+    }
     &:hover {
-      background: linear-gradient(135deg, $OP_sunrise_10, $OP_red_90);
+      transform: translateY(3px);
+    }
+    &:hover::before {
+      opacity: 0;
     }
   }
 }
