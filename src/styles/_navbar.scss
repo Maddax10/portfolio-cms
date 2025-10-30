@@ -25,7 +25,6 @@
     padding: 16px 12px;
     corner-shape: squircle;
     &:hover {
-      border-radius: 32px;
       color: black;
       background: linear-gradient(135deg, $OP_red_30, $red);
     }
