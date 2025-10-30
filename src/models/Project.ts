@@ -1,10 +1,10 @@
 import type { Skill } from "./Skill";
 
 export type Project = {
-  id: Number;
-  title: String;
-  description: String;
-  github: String;
-  image_path: String;
+  id: number;
+  title: string;
+  description: string;
+  github: string;
+  image_path: string;
   skills: Skill[];
 };

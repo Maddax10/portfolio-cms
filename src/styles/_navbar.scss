@@ -1,6 +1,8 @@
+@use "./_variables" as *;
 .navbar {
   position: fixed;
   top: 0;
+  z-index: 1000000;
   width: 100%;
   display: flex;
   background: linear-gradient(135deg, $OP_black_20 60%, $OP_sunrise_90 100%);
@@ -16,16 +18,19 @@
     padding: 16px;
   }
   &__link {
-    transition: background 0.35s ease-out;
-    background: linear-gradient(135deg, $sunrise, $darksunrise_15);
+    transition: all 0.1s ease-out;
+    background: linear-gradient(135deg, $OP_black_30, $OP_black_70);
 
     font-weight: 900;
     text-decoration: none;
-    color: black;
+    color: $sunrise;
     padding: 16px 12px;
     border-radius: 16px;
+    corner-shape: squircle;
     &:hover {
-      background: linear-gradient(135deg, $sunrise 100%, $darksunrise_15);
+      border-radius: 32px;
+      color: black;
+      background: linear-gradient(135deg, $OP_red_30, $red);
     }
   }
 }

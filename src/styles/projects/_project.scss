@@ -1,3 +1,5 @@
+@use "../_variables" as *;
+
 .projects {
   display: flex;
   flex-direction: column;
@@ -8,6 +10,7 @@
     text-align: center;
     width: 100%;
     padding: 16px;
+    margin-block-end: 24px;
 
     //[START] linear-gradient sur texte
     background: linear-gradient(135deg, $sunrise 40%, $red);
