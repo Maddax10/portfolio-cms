@@ -1,0 +1,77 @@
+@use "./_variables" as *;
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $L_black_5;
+  padding: 32px;
+  width: 50%;
+  height: fit-content;
+  border-radius: 32px;
+  corner-shape: squircle;
+  box-shadow: 0 0 12px 0 $black;
+
+  &__title {
+    display: flex;
+
+    font-weight: 900;
+    font-size: 32px;
+
+    //[START] linear-gradient sur texte
+    background: linear-gradient(135deg, $sunrise, $red);
+    -webkit-background-clip: text; /* Safari/Chrome */
+    background-clip: text; /* Standard */
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    //[END] linear-gradient sur texte
+  }
+  &__description {
+    margin-block-start: 8px;
+    margin-block-end: 16px;
+    color: $L_black_60;
+    font-style: italic;
+    font-weight: 500;
+  }
+  &__label {
+    display: flex;
+    align-self: start;
+    margin: 6px 8px;
+    margin-block-start: 16px;
+    font-weight: 700;
+    color: $L_black_100;
+  }
+  &__button {
+    transition: all $transitionTime;
+    margin-block-start: 32px;
+    font-size: 16px;
+    overflow: hidden;
+    position: relative;
+
+    //[START] linear-gradient sur texte
+    background: linear-gradient(135deg, $sunrise, $red);
+    -webkit-background-clip: text; /* Safari/Chrome */
+    background-clip: text; /* Standard */
+    -webkit-text-fill-color: transparent;
+    //[END] linear-gradient sur texte
+
+    &::before {
+      content: "Se connecter";
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      inset: 0;
+      background: linear-gradient(135deg, $red, $sunrise);
+      opacity: 1; // caché par défaut
+      transition: opacity $transitionTime ease;
+      pointer-events: none;
+      -webkit-text-fill-color: black;
+    }
+    &:hover {
+      transform: translateY(3px);
+    }
+    &:hover::before {
+      opacity: 0;
+    }
+  }
+}

@@ -32,6 +32,8 @@
 
 <template>
   <form class="login" v-if="verifToken">
+    <label for="" class="login__title">Login</label>
+    <label for="" class="login__description">Accède à ton espace de gestion</label>
     <label for="" class="login__label">Email</label>
     <input type="mail" class="login__input" v-model="mail" />
     <label for="" class="login__label">Password</label>
