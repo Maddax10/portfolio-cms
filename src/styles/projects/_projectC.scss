@@ -103,7 +103,7 @@
   }
   &__sendButton {
     //Transition divisé par 4 car sinon avec le corner-shape ça fait une transition plus lente
-    transition: border-radius calc($transitionTime/4);
+    transition: border-radius $transitionTime/4;
     font-family: "Raleway", sans-serif;
     color: $black;
     padding: 12px 16px;
