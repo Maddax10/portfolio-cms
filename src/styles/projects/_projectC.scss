@@ -92,7 +92,8 @@
     border: none;
     resize: vertical;
   }
-  &__skillsList {
+  &__skillsList,
+  &__skills {
     display: flex;
     flex-flow: row wrap;
     gap: 8px;
@@ -122,5 +123,9 @@
     &:hover::before {
       opacity: 0;
     }
+  }
+  &__availableSkill {
+    width: 32px;
+    aspect-ratio: 1/1;
   }
 }

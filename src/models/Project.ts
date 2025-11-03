@@ -1,7 +1,7 @@
 import type { Skill } from "./Skill";
 
 export type Project = {
-  id: number;
+  id?: number;
   title: string;
   description: string;
   github: string;
