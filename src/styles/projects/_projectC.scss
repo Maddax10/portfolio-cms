@@ -102,36 +102,22 @@
     width: 32px;
   }
   &__sendButton {
-    transition: all $transitionTime;
+    transition: all calc($transitionTime/2) ease-in;
     margin-block: 32px;
     font-size: 16px;
     overflow: hidden;
-    position: relative;
     width: fit-content;
     display: flex;
     align-self: center;
-    //[START] linear-gradient sur texte
-    background: linear-gradient(135deg, $sunrise, $red);
-    -webkit-background-clip: text; /* Safari/Chrome */
-    background-clip: text; /* Standard */
-    -webkit-text-fill-color: transparent;
-    //[END] linear-gradient sur texte
+    align-items: center;
+    background: linear-gradient(135deg, $red, $sunrise);
+    border-bottom: 5px solid $D_red_40;
+    min-height: 60px;
+    max-height: 60px;
 
-    &::before {
-      content: "Modifier";
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      inset: 0;
-      background: linear-gradient(135deg, $red, $sunrise);
-      opacity: 1; // caché par défaut
-      transition: opacity $transitionTime ease;
-      pointer-events: none;
-      -webkit-text-fill-color: black;
-    }
     &:hover {
       transform: translateY(3px);
+      border: 0px solid $D_red_60;
     }
     &:hover::before {
       opacity: 0;
