@@ -99,11 +99,17 @@
     gap: 8px;
     justify-content: center;
   }
+  &__skillsList {
+    position: absolute;
+    justify-self: center;
+  }
   &__skill {
     width: 32px;
   }
+
   &__sendButton {
     transition: all calc($transitionTime/2) ease-in;
+    -webkit-transition: all calc($transitionTime/2) ease-in;
     margin-block: 32px;
     font-size: 16px;
     overflow: hidden;
@@ -117,11 +123,19 @@
     max-height: 60px;
 
     &:hover {
-      transform: translateY(3px);
-      border: 0px solid $D_red_60;
+      margin-block-end: 34px;
+      transform: translateY(2px);
+      border-bottom: 3px solid $D_red_60;
     }
     &:hover::before {
       opacity: 0;
+    }
+    &:active {
+      min-height: 55px;
+      margin-block-end: 37px;
+      transform: translateY(5px);
+      border-bottom: 0px solid $D_red_60;
+      opacity: 0.66;
     }
   }
   &__availableSkill {
