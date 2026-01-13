@@ -18,7 +18,7 @@
 
   checkIfConnected();
   //[END] Check if connected
-  //========================
+  //======================== 
 
 </script>
 
