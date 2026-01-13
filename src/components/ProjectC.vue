@@ -52,6 +52,10 @@
         console.log(skill)
         currentSkills.value.push(skill)
     }
+    const removeSkill = (key: number) => {
+        console.log(key)
+        currentSkills.value.splice(key, 1)
+    }
 </script>
 
 <template>
@@ -84,7 +88,7 @@
                 <div class="projectCard__title">Skills</div>
                 <div class="projectCard__skills">
                     <img class="projectCard__skill" v-for="(skill, key) in currentSkills" :key="key"
-                        :src=skill.image_path :alt=skill.name>
+                        :src=skill.image_path :alt=skill.name @click="removeSkill(key)">
                     <button class="projectCard__addSkillBtn" @click.prevent="openAvailableSkills">+</button>
                 </div>
                 <div class="projectCard__skillsList">
