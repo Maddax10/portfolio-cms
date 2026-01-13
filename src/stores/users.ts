@@ -24,7 +24,6 @@ export const useUsersStore = defineStore("usersStore", {
     async login(credentials: { mail: string; password: string }) {
       this.loading = true;
       try {
-        // Remplace ce bloc par l'appel API réel
         const loginResp = await fetch(`${API_URL}/users/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -5,8 +5,8 @@ import { useUsersStore } from "./users";
 
 export const useProjectsStore = defineStore("projectsStore", {
   state: () => ({
-    projects: null as Project[] | null,
-    loading: false as Boolean,
+    projects: [] as Project[],
+    loading: false as boolean,
   }),
   getters: {},
   actions: {

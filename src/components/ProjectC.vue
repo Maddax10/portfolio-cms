@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-    import { defineProps, ref, } from 'vue';
+    import { ref, } from 'vue';
     import type { PropType, Ref } from "vue"
     import type { Project } from '../models/Project';
     import type { Skill } from '../models/Skill';
@@ -27,7 +27,7 @@
     const currentSkills: Ref<Skill[]> = ref(props.project.skills);
 
     const modifyProject = () => {
-        let project: Project = {
+        const project: Project = {
             id: id.value,
             title: title.value,
             description: description.value,
@@ -48,7 +48,10 @@
     const openAvailableSkills = () => {
         isSkillAddClick.value = !isSkillAddClick.value;
     }
-
+    const addSkill = (skill: Skill) => {
+        console.log(skill)
+        currentSkills.value.push(skill)
+    }
 </script>
 
 <template>
@@ -85,7 +88,7 @@
                     <button class="projectCard__addSkillBtn" @click.prevent="openAvailableSkills">+</button>
                 </div>
                 <div class="projectCard__skillsList">
-                    <ProjectSkills v-if="isSkillAddClick" :currentSkills="currentSkills" />
+                    <ProjectSkills v-if="isSkillAddClick" :currentSkills="currentSkills" @addSkill="addSkill" />
                 </div>
             </div>
             <div class="projectCard__section">

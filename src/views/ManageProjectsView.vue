@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   import ProjectC from "@/components/ProjectC.vue";
   import { useUsersStore } from "@/stores/users";
   import { useProjectsStore } from "@/stores/projects";
