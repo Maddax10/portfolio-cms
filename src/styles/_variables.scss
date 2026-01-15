@@ -82,6 +82,7 @@ $OP_sunrise_70: color.scale($sunrise, $alpha: -70%);
 $OP_sunrise_80: color.scale($sunrise, $alpha: -80%);
 $OP_sunrise_90: color.scale($sunrise, $alpha: -90%);
 
+$shadow: $OP_black_60;
 $transitionTime: 0.3s;
 $doubleTransitionTime: calc($transitionTime * 2);
 $mobile: 800px;

@@ -4,7 +4,7 @@
     import type { Project } from '../models/Project';
     import type { Skill } from '../models/Skill';
     import { useProjectsStore } from '../stores/projects';
-    import { useSkillsStore } from '../stores/skills';
+    // import { useSkillsStore } from '../stores/skills';
     import ProjectSkills from './ProjectSkills.vue';
     const props = defineProps({
         project: {
@@ -13,10 +13,13 @@
         }
 
     });
+    const emits = defineEmits<
+        { (e: "messageNotif", message: string, error: boolean): void }
+    >()
     const isSkillAddClick = ref(false);
 
     const projectsStore = useProjectsStore();
-    const skillsStore = useSkillsStore()
+    // const skillsStore = useSkillsStore()
 
     const id: Ref<number | undefined> = ref(props.project.id);
     const title: Ref<string> = ref(props.project.title);
@@ -26,7 +29,24 @@
     const github: Ref<string> = ref(props.project.github);
     const currentSkills: Ref<Skill[]> = ref(props.project.skills);
 
-    const modifyProject = () => {
+    const showUpdateNotification = (message: string) => {
+        projectsStore.setNotification(true)
+
+        emits("messageNotif", message, false)
+
+        setTimeout(() => { projectsStore.setNotification(false) }, 7000)
+
+    }
+    const showErrorNotification = (message: string) => {
+        projectsStore.setNotification(true)
+
+        emits("messageNotif", message, true)
+
+        setTimeout(() => { projectsStore.setNotification(false) }, 7000)
+
+    }
+
+    const modifyProject = async () => {
         const project: Project = {
             id: id.value,
             title: title.value,
@@ -35,14 +55,21 @@
             image_path: imgSrc.value,
             skills: currentSkills.value
         }
-        projectsStore.updateProject(project)
+        try {
+            const updatedProject: Project = await projectsStore.updateProject(project)
 
-        //Mise a jour des informations
-        title.value = project.title;
-        description.value = project.description;
-        github.value = project.github;
-        imgSrc.value = project.image_path;
-        currentSkills.value = project.skills;
+            //Mise a jour des informations reçues de l'api
+            title.value = updatedProject.title;
+            description.value = updatedProject.description;
+            github.value = updatedProject.github;
+            imgSrc.value = updatedProject.image_path;
+            currentSkills.value = updatedProject.skills;
+
+            showUpdateNotification(`Projet \'${updatedProject.title}\' mis à jour !`);
+        } catch (e: Error | unknown) {
+            showErrorNotification(`Erreur lors de la mise à jour !`)
+            console.error(e)
+        }
     }
 
     const openAvailableSkills = () => {

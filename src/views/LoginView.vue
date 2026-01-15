@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import { useUsersStore } from "../stores/users";
+  import { useUserStore } from "../stores/users";
   import { ref } from "vue";
   import { useRouter } from "vue-router";
 
   const router = useRouter();
-  const userStore = useUsersStore();
+  const userStore = useUserStore();
   userStore.initUser();
 
   const mail = ref("");

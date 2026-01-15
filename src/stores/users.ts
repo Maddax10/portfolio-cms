@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { API_URL } from "@/config/config";
 import type { User } from "@/models/User.ts";
 
-export const useUsersStore = defineStore("usersStore", {
+export const useUserStore = defineStore("userStore", {
   state: () => ({
     token: null as string | null,
     user: null as User | null,
@@ -21,6 +21,7 @@ export const useUsersStore = defineStore("usersStore", {
     setUser(user: User | null) {
       this.user = user;
     },
+
     async login(credentials: { mail: string; password: string }) {
       this.loading = true;
       try {

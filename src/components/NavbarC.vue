@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { useUsersStore } from "../stores/users";
+  import { useUserStore } from "../stores/users";
 
-  const loginStore = useUsersStore();
+  const loginStore = useUserStore();
 
   const logout = () => {
     loginStore.logout();
