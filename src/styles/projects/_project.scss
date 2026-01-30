@@ -1,4 +1,5 @@
 @use "../_variables" as *;
+@import "../mixin.scss";
 
 .projects {
   display: flex;
@@ -12,13 +13,15 @@
     padding: 16px;
     margin-block-end: 24px;
 
-    //[START] linear-gradient sur texte
-    background: linear-gradient(135deg, $sunrise 40%, $red);
-    -webkit-background-clip: text; /* Safari/Chrome */
-    background-clip: text; /* Standard */
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    //[END] linear-gradient sur texte
+    @include gradient-text($red, $sunrise-red);
+  }
+  &__add {
+    padding: 16px;
+    background-color: red;
+    position: absolute;
+    display: flex;
+    justify-self: center;
+    align-self: center;
   }
   &__list {
     display: flex;

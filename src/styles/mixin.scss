@@ -1,0 +1,10 @@
+@use "variables" as *;
+@mixin gradient-text($color1, $color2) {
+  //[START] linear-gradient sur texte
+  background: linear-gradient(135deg, $color1, $color2);
+  -webkit-background-clip: text; /* Safari/Chrome */
+  background-clip: text; /* Standard */
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  //[END] linear-gradient sur texte
+}

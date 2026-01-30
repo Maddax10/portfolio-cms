@@ -30,21 +30,41 @@ export const useProjectsStore = defineStore("projectsStore", {
       this.isNotification = status;
     },
     async updateProject(project: Project): Promise<Project> {
-      const usersStore = useUserStore();
+      const userStore = useUserStore();
       try {
-        const projectUpdated = await fetch(`${API_URL}/projects/update`, {
+        const resp = await fetch(`${API_URL}/projects/update`, {
           method: "PUT",
           body: JSON.stringify(project),
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + usersStore.token,
+            Authorization: "Bearer " + userStore.token,
           },
         });
 
-        if (!projectUpdated.ok) throw new Error("Something went wrong after update");
+        if (!resp.ok) throw new Error("Something went wrong after update");
 
-        const resp = await projectUpdated.json();
-        return await resp;
+        const projectUpdated = await resp.json();
+        return projectUpdated;
+      } catch (error) {
+        throw error;
+      }
+    },
+    async createProject(project: Project): Promise<Project> {
+      const userStore = useUserStore();
+      try {
+        const resp = await fetch(`${API_URL}/projects/create`, {
+          method: "POST",
+          body: JSON.stringify(project),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + userStore.token,
+          },
+        });
+        if (!resp.ok) throw new Error("Something went wrong after create");
+
+        const createdProject = await resp.json();
+
+        return createdProject;
       } catch (error) {
         throw error;
       }

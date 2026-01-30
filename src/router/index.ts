@@ -1,5 +1,4 @@
 import HomeView from "@/views/HomeView.vue";
-import LoginView from "@/views/LoginView.vue";
 import ManageProjectsView from "../views/ManageProjectsView.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -9,7 +8,7 @@ const router = createRouter({
     {
       path: "/login",
       name: "login",
-      component: LoginView,
+      component: HomeView,
     },
     {
       path: "/manage-projects",

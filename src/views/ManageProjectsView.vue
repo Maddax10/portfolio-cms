@@ -4,15 +4,14 @@
   import { useProjectsStore } from "@/stores/projects";
   import { useRouter } from "vue-router";
   import NotificationComponent from "@/components/NotificationComponent.vue"
-  import type { Notification } from "@/models/Notification";
-  import { ref, type Ref } from "vue";
+  import { ref } from "vue";
+  import AddProjectModal from "@/components/modals/AddProjectModal.vue";
 
   const router = useRouter();
   const userStore = useUserStore();
   const projectsStore = useProjectsStore();
 
-  //==========================
-  //[START] Check if connected
+  //#region Check if connected
   const checkIfConnected = () => {
     const token = userStore.getToken;
     const verifToken = token === null || token === undefined;
@@ -20,8 +19,10 @@
   }
 
   checkIfConnected();
-  //[END] Check if connected
-  //======================== 
+  //#endregion Check if connected
+
+  //#region Notifications
+
   const messageNotif = ref("")
   const errorNotif = ref(false)
 
@@ -31,12 +32,28 @@
     // console.log("error", error)
     errorNotif.value = error
   }
+  //#endregion Notifications
+
+  const isAddProject = ref(false)
+  const addProject = () => {
+    toggleAddProjectModal();
+    // showModalAddProject();
+
+  }
+  const toggleAddProjectModal = () => {
+    isAddProject.value = !isAddProject.value;
+    console.log("isAddProject.value", isAddProject.value);
+
+  }
 
 </script>
 
 <template>
   <div class="projects">
+    <AddProjectModal v-if="isAddProject" @close="toggleAddProjectModal" @messageNotif="MessageNotif">test
+    </AddProjectModal>
     <div class="projects__title">Manage projects</div>
+    <button type="button" class="navbar__addProject" @click.prevent="addProject">Ajouter</button>
     <div class="projects__list">
       <ProjectC v-for="(project, key) in projectsStore.projects" :key="key" :project="project"
         @messageNotif="MessageNotif" />

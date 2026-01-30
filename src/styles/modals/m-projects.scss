@@ -1,0 +1,9 @@
+@use "../_variables.scss" as *;
+@import "../mixin.scss";
+.m-project {
+  span {
+    color: $sunrise;
+    font-weight: 600;
+    @include gradient-text($sunrise, $sunrise-red);
+  }
+}
