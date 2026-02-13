@@ -80,43 +80,47 @@
 </script>
 
 <template>
-    <div class="projectCard">
-        <div class="projectCard__imageSection">
-            <div class="projectCard__titleCard">{{ title }}</div>
-            <img class="projectCard__image" :src='`${API_URL}${imgSrc}`' :alt=imgAlt />
-        </div>
-        <div class="projectCard__infos">
-            <!--Titre-->
-            <div class="projectCard__section">
-                <div class="projectCard__title">Titre</div>
-                <input class="projectCard__input" type="text" v-model="title" />
-            </div>
+    <TransitionGroup name="fade">
 
-            <!--Description-->
-            <div class="projectCard__section">
-                <div class="projectCard__title">Description</div>
-                <textarea class="projectCard__textarea" v-model="description" />
+        <div class="projectCard">
+            <div class="projectCard__imageSection">
+                <div class="projectCard__titleCard">{{ title }}</div>
+                <img class="projectCard__image" :src='`${API_URL}${imgSrc}`' :alt=imgAlt />
             </div>
+            <div class="projectCard__infos">
+                <!--Titre-->
+                <div class="projectCard__section">
+                    <div class="projectCard__title">Titre</div>
+                    <input class="projectCard__input" type="text" v-model="title" />
+                </div>
 
-            <!--Lien github-->
-            <div class="projectCard__section">
-                <div class="projectCard__title">Lien github</div>
-                <input class="projectCard__input" type="text" v-model="github" />
-            </div>
+                <!--Description-->
+                <div class="projectCard__section">
+                    <div class="projectCard__title">Description</div>
+                    <textarea class="projectCard__textarea" v-model="description" />
+                </div>
 
-            <!--Skills-->
-            <div class="projectCard__section">
-                <div class="projectCard__title">Skills</div>
-                <div class="projectCard__skills">
-                    <ProjectSkills :currentSkills="currentSkills" />
+                <!--Lien github-->
+                <div class="projectCard__section">
+                    <div class="projectCard__title">Lien github</div>
+                    <input class="projectCard__input" type="text" v-model="github" />
+                </div>
+
+                <!--Skills-->
+
+                <div class="projectCard__section">
+                    <div class="projectCard__title">Skills</div>
+                    <div class="projectCard__skills">
+                        <ProjectSkills :currentSkills="currentSkills" />
+                    </div>
+                </div>
+                <div class="projectCard__section">
+                    <!-- <div class="projectCard__title">Lien de l'image</div>
+                <input class="projectCard__input" type="text" v-model="imgSrc" /> -->
+                    <ProjectImage @selectImage="selectImage"></ProjectImage>
                 </div>
             </div>
-            <div class="projectCard__section">
-                <!-- <div class="projectCard__title">Lien de l'image</div>
-                <input class="projectCard__input" type="text" v-model="imgSrc" /> -->
-                <ProjectImage @selectImage="selectImage"></ProjectImage>
-            </div>
+            <button class="projectCard__sendButton" @click.prevent="modifyProject">Modifier le projet</button>
         </div>
-        <button class="projectCard__sendButton" @click.prevent="modifyProject">Modifier le projet</button>
-    </div>
+    </TransitionGroup>
 </template>

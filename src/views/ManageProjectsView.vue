@@ -55,9 +55,12 @@
 </script>
 
 <template>
+
   <div class="projects">
-    <AddProjectModal v-if="isAddProject" @close="toggleAddProjectModal" @messageNotif="MessageNotif">test
-    </AddProjectModal>
+    <Transition name="fade">
+      <AddProjectModal v-if="isAddProject" @close="toggleAddProjectModal" @messageNotif="MessageNotif">
+      </AddProjectModal>
+    </Transition>
     <div class="projects__title">Manage projects</div>
     <button type="button" class="navbar__addProject" @click.prevent="addProject">Ajouter</button>
     <div class="projects__list">

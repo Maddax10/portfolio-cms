@@ -18,3 +18,26 @@
     min-width: 200px;
   }
 }
+.fade-enter-active {
+  transition:
+    opacity 300ms ease-out,
+    transform 300ms ease-out;
+}
+.fade-leave-active {
+  transition:
+    opacity 200ms ease-out,
+    transform 200ms ease-out;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  // transform: translateY(6px);
+}
+
+.fade-move {
+  transition: transform 180ms ease;
+}
+
+.fade-leave-active {
+  position: absolute;
+}

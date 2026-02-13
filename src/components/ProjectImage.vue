@@ -19,9 +19,12 @@
 </script>
 
 <template>
-    <div class="images" @click="showImages">Show images</div>
-    <div class="images__show" v-if="isShowImages">
-        <img class="images__item" v-for="path, key in imagesStore.images" :key="key" :src="API_URL + path"
-            @click="selectImagePath(path)">
-    </div>
+    <TransitionGroup name="fade">
+
+        <div class="images" @click="showImages">Show images</div>
+        <div class="images__show" v-if="isShowImages">
+            <img class="images__item" v-for="path, key in imagesStore.images" :key="key" :src="API_URL + path"
+                @click="selectImagePath(path)">
+        </div>
+    </TransitionGroup>
 </template>

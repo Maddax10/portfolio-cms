@@ -57,6 +57,7 @@
 </script>
 
 <template>
+
     <div class="modal">
         <div class="modal__card">
             <div class="modal__header">
@@ -89,4 +90,5 @@
             </div>
         </div>
     </div>
+
 </template>

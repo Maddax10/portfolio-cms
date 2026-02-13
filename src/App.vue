@@ -9,10 +9,13 @@
 </script>
 
 <template>
-  <TransitionGroup name="fade">
+  <Transition name="fade" appear>
     <NavbarC></NavbarC>
+  </Transition>
+
+  <Transition name="fade" appear>
     <router-view></router-view>
-  </TransitionGroup>
+  </Transition>
 </template>
 
 <style>
