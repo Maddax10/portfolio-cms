@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { API_URL } from "@/config/config";
+import { API_ENDPOINT, API_URL } from "@/config/config";
 import type { Project } from "@/models/Project.ts";
 import { useUserStore } from "./users";
 
@@ -16,7 +16,7 @@ export const useProjectsStore = defineStore("projectsStore", {
     },
     async initProjects() {
       try {
-        const projectsResp = await fetch(`${API_URL}/projects/all`);
+        const projectsResp = await fetch(`${API_URL}${API_ENDPOINT}/projects/all`);
 
         const projectsData = await projectsResp.json();
 
@@ -32,7 +32,7 @@ export const useProjectsStore = defineStore("projectsStore", {
     async updateProject(project: Project): Promise<Project> {
       const userStore = useUserStore();
       try {
-        const resp = await fetch(`${API_URL}/projects/update`, {
+        const resp = await fetch(`${API_URL}${API_ENDPOINT}/projects/update`, {
           method: "PUT",
           body: JSON.stringify(project),
           headers: {
@@ -52,7 +52,7 @@ export const useProjectsStore = defineStore("projectsStore", {
     async createProject(project: Project): Promise<Project> {
       const userStore = useUserStore();
       try {
-        const resp = await fetch(`${API_URL}/projects/create`, {
+        const resp = await fetch(`${API_URL}${API_ENDPOINT}/projects/create`, {
           method: "POST",
           body: JSON.stringify(project),
           headers: {

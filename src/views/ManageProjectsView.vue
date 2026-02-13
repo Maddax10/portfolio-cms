@@ -6,10 +6,16 @@
   import NotificationComponent from "@/components/NotificationComponent.vue"
   import { ref } from "vue";
   import AddProjectModal from "@/components/modals/AddProjectModal.vue";
+  import { useImagesStore } from "@/stores/images";
+  import { useSkillsStore } from "@/stores/skills";
 
   const router = useRouter();
   const userStore = useUserStore();
   const projectsStore = useProjectsStore();
+  const skillsStore = useSkillsStore()
+
+  projectsStore.initProjects();
+  skillsStore.initSkills();
 
   //#region Check if connected
   const checkIfConnected = () => {

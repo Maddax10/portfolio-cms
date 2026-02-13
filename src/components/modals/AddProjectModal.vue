@@ -1,9 +1,9 @@
 <script setup lang="ts">
-    import { Skill } from '@/models/Skill';
-    import { Ref, ref } from 'vue';
+    import type { Skill } from '@/models/Skill';
+    import { type Ref, ref } from 'vue';
     import ProjectSkills from '../ProjectSkills.vue';
     import { useProjectsStore } from '@/stores/projects';
-    import { Project } from '@/models/Project';
+    import type { Project } from '@/models/Project';
 
     const projectsStore = useProjectsStore();
 
@@ -13,20 +13,6 @@
             (e: "messageNotif", message: string, error: boolean): void
         }
     >()
-
-    const isSkillAddClick = ref(false)
-
-    const openAvailableSkills = () => {
-        isSkillAddClick.value = !isSkillAddClick.value;
-    }
-    const addSkill = (skill: Skill) => {
-        console.log(skill)
-        currentSkills.value.push(skill)
-    }
-    const removeSkill = (key: number) => {
-        console.log(key)
-        currentSkills.value.splice(key, 1)
-    }
 
     const title = ref('');
     const description = ref('');
@@ -91,14 +77,7 @@
                     <input type="text" v-model="github">
                 </div>
                 <div class="m-project">
-                    <div class="skills">
-                        <img class="skill" v-for="(skill, key) in currentSkills" :key="key" :src=skill.image_path
-                            :alt=skill.name @click="removeSkill(key)">
-                        <button class="addSkillBtn" @click.prevent="openAvailableSkills">+</button>
-                    </div>
-                    <div class="skillsList">
-                        <ProjectSkills v-if="isSkillAddClick" :currentSkills="currentSkills" @addSkill="addSkill" />
-                    </div>
+                    <ProjectSkills :currentSkills="currentSkills" />
                 </div>
                 <div class="m-project">
                     <span class="m-project__title">Lien de l'image</span>

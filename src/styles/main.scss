@@ -1,3 +1,5 @@
+@use "_variables" as *;
+
 @use "normalize";
 @use "index";
 @use "navbar";
@@ -6,3 +8,13 @@
 @use "./projects/projectC";
 @use "./modals/modals.scss";
 @use "./modals/m-projects.scss";
+@use "./skills/skilss.scss";
+.images {
+  background-color: red;
+  padding: 12px;
+  display: flex;
+  &__item {
+    max-width: 50%;
+    min-width: 200px;
+  }
+}

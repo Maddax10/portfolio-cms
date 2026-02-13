@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { API_URL } from "@/config/config";
+import { API_ENDPOINT, API_URL } from "@/config/config";
 import type { User } from "@/models/User.ts";
 
 export const useUserStore = defineStore("userStore", {
@@ -25,7 +25,7 @@ export const useUserStore = defineStore("userStore", {
     async login(credentials: { mail: string; password: string }) {
       this.loading = true;
       try {
-        const loginResp = await fetch(`${API_URL}/users/login`, {
+        const loginResp = await fetch(`${API_URL}${API_ENDPOINT}/users/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(credentials),
@@ -59,7 +59,7 @@ export const useUserStore = defineStore("userStore", {
 
       this.token = token;
 
-      const meResp = await fetch(`${API_URL}/users/me`, {
+      const meResp = await fetch(`${API_URL}${API_ENDPOINT}/users/me`, {
         method: "GET",
         headers: {
           Authorization: "Bearer " + token,
