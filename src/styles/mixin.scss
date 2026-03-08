@@ -8,3 +8,21 @@
   color: transparent;
   //[END] linear-gradient sur texte
 }
+
+@mixin button($color) {
+  background-color: $color;
+  border-radius: 16px;
+  corner-shape: squircle;
+  width: fit-content;
+  padding: 12px 16px;
+  align-self: center;
+  border: none;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  &:hover {
+    background-color: $L_black_5;
+    color: $sunrise;
+    box-shadow: 0 0 0 1px $sunrise;
+  }
+}

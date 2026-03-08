@@ -2,7 +2,7 @@
 .navbar {
   position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 10000;
   width: 100%;
   display: flex;
   background: linear-gradient(135deg, $OP_black_20 60%, $OP_sunrise_90 100%);

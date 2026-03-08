@@ -10,15 +10,37 @@
 @use "./modals/m-projects.scss";
 @use "./skills/skilss.scss";
 .images {
-  background-color: red;
-  padding: 12px;
-  display: flex;
+  &__items {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-flow: row wrap;
+  }
   &__item {
-    max-width: 50%;
-    min-width: 200px;
+    border: 2px solid $OP_white_70;
+    border-radius: 16px;
+    corner-shape: squircle;
+    cursor: pointer;
+    max-width: 300px;
+    width: 100%;
+    height: fit-content;
+    transition: all $transitionTime ease-out;
+    &:hover {
+      border: 2px solid $OP_sunrise_20;
+      border-radius: 16px;
+      corner-shape: squircle;
+    }
+    &:active {
+      border-color: $sunrise;
+    }
+  }
+  &__addModal {
+    background-color: red;
   }
 }
-.fade-enter-active {
+.images:clic .fade-enter-active {
   transition:
     opacity 300ms ease-out,
     transform 300ms ease-out;

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { API_ENDPOINT, API_URL } from "@/config/config";
+import { API_FINAL_URL } from "@/config/config";
 import type { Skill } from "@/models/Skill.ts";
 
 export const useSkillsStore = defineStore("skillsStore", {
@@ -14,7 +14,7 @@ export const useSkillsStore = defineStore("skillsStore", {
     },
     async initSkills() {
       try {
-        const skillsResp = await fetch(`${API_URL}${API_ENDPOINT}/skills/all`);
+        const skillsResp = await fetch(`${API_FINAL_URL}/skills/all`);
 
         const skillsData = await skillsResp.json();
 

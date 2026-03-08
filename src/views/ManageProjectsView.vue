@@ -6,8 +6,8 @@
   import NotificationComponent from "@/components/NotificationComponent.vue"
   import { ref } from "vue";
   import AddProjectModal from "@/components/modals/AddProjectModal.vue";
-  import { useImagesStore } from "@/stores/images";
   import { useSkillsStore } from "@/stores/skills";
+  import ProjectComponent from "@/components/ProjectComponent.vue";
 
   const router = useRouter();
   const userStore = useUserStore();
@@ -64,6 +64,8 @@
     <div class="projects__title">Manage projects</div>
     <button type="button" class="navbar__addProject" @click.prevent="addProject">Ajouter</button>
     <div class="projects__list">
+
+      <ProjectComponent></ProjectComponent>
       <ProjectC v-for="(project, key) in projectsStore.projects" :key="key" :project="project"
         @messageNotif="MessageNotif" />
       <NotificationComponent v-if="projectsStore.isNotification" :message="messageNotif" :error="errorNotif">

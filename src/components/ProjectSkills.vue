@@ -2,7 +2,6 @@
     import { useSkillsStore } from "../stores/skills";
     import type { Skill } from "../models/Skill";
     import { computed, ref, type PropType } from "vue";
-    import { API_URL } from "@/config/config";
     const props = defineProps({
         currentSkills: {
             type: Array as PropType<Skill[]>,
@@ -47,13 +46,13 @@
 <template>
     <div class="skills">
         <div class="skills__currents">
-            <img class="skills__item" v-for="(skill, key) in currentSkills" :key="key" :src="API_URL + skill.image_path"
+            <img class="skills__item" v-for="(skill, key) in currentSkills" :key="key" :src="skill.image_path"
                 :alt=skill.name @click="removeSkill(key)">
         </div>
         <button class="skills__addBtn" @click.prevent="openAvailableSkills">+</button>
 
         <div class="skills__availables" v-if="isSkillAddClick">
-            <img class="skills__item" v-for="(skill, key) in availableSkills" :key="key" :src="API_URL + skill.image_path"
+            <img class="skills__item" v-for="(skill, key) in availableSkills" :key="key" :src="skill.image_path"
                 @click="addSkill(skill)">
         </div>
     </div>

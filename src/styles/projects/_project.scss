@@ -13,7 +13,7 @@
     padding: 16px;
     margin-block-end: 24px;
 
-    @include gradient-text($red, $sunrise-red);
+    @include gradient-text($sunrise, $red);
   }
   &__add {
     padding: 16px;

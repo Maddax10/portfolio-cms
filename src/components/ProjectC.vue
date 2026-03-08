@@ -6,7 +6,6 @@
     import { useProjectsStore } from '../stores/projects';
     // import { useSkillsStore } from '../stores/skills';
     import ProjectSkills from './ProjectSkills.vue';
-    import { API_URL } from '@/config/config';
     import ProjectImage from './ProjectImage.vue';
     const props = defineProps({
         project: {
@@ -24,7 +23,7 @@
 
     const id: Ref<number | undefined> = ref(props.project.id);
     const title: Ref<string> = ref(props.project.title);
-    const imgSrc: Ref<string> = ref(props.project.image_path);
+    const image_path: Ref<string> = ref(props.project.image_path);
     const imgAlt: Ref<string> = ref(props.project.title + " - screen");
     const description: Ref<string> = ref(props.project.description);
     const github: Ref<string> = ref(props.project.github);
@@ -53,7 +52,7 @@
             title: title.value,
             description: description.value,
             github: github.value,
-            image_path: imgSrc.value,
+            image_path: image_path.value,
             skills: currentSkills.value
         }
         try {
@@ -63,7 +62,7 @@
             title.value = updatedProject.title;
             description.value = updatedProject.description;
             github.value = updatedProject.github;
-            imgSrc.value = updatedProject.image_path;
+            image_path.value = updatedProject.image_path;
             currentSkills.value = updatedProject.skills;
 
             showUpdateNotification(`Projet \'${updatedProject.title}\' mis à jour !`);
@@ -74,8 +73,8 @@
     }
 
     const selectImage = (path: string) => {
-        console.log(path)
-        imgSrc.value = path;
+        image_path.value = path;
+
     }
 </script>
 
@@ -85,7 +84,7 @@
         <div class="projectCard">
             <div class="projectCard__imageSection">
                 <div class="projectCard__titleCard">{{ title }}</div>
-                <img class="projectCard__image" :src='`${API_URL}${imgSrc}`' :alt=imgAlt />
+                <img class="projectCard__image" :src=image_path :alt=imgAlt />
             </div>
             <div class="projectCard__infos">
                 <!--Titre-->
