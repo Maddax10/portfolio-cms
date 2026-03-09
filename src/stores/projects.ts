@@ -18,7 +18,8 @@ export const useProjectsStore = defineStore("projectsStore", {
       try {
         const projectsResp = await fetch(`${API_FINAL_URL}/projects/all`);
 
-        if (!projectsResp.ok) throw new Error("Something went wrong during init");
+        if (!projectsResp.ok)
+          throw new Error("Something went wrong during init" + projectsResp.body);
         const projectsData = await projectsResp.json();
 
         console.log(projectsData);
@@ -42,10 +43,10 @@ export const useProjectsStore = defineStore("projectsStore", {
           },
         });
 
-        if (!resp.ok) throw new Error("Something went wrong after update");
+        if (!resp.ok) throw new Error("Something went wrong after update" + resp.body);
 
         const projectUpdated = await resp.json();
-        this.initProjects();
+        await this.initProjects();
         return projectUpdated;
       } catch (error) {
         throw error;
@@ -62,11 +63,11 @@ export const useProjectsStore = defineStore("projectsStore", {
             Authorization: "Bearer " + userStore.token,
           },
         });
-        if (!resp.ok) throw new Error("Something went wrong after create");
+        if (!resp.ok) throw new Error("Something went wrong after create : " + resp.body);
 
         const createdProject = await resp.json();
 
-        this.initProjects();
+        await this.initProjects();
         return createdProject;
       } catch (error) {
         throw error;

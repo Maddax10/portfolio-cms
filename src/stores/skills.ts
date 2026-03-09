@@ -16,7 +16,7 @@ export const useSkillsStore = defineStore("skillsStore", {
       try {
         const skillsResp = await fetch(`${API_FINAL_URL}/skills/all`);
 
-        if (!skillsResp.ok) throw new Error("Something went wrong during init");
+        if (!skillsResp.ok) throw new Error("Something went wrong during init" + skillsResp.body);
 
         const skillsData = await skillsResp.json();
 

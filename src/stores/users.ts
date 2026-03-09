@@ -33,7 +33,7 @@ export const useUserStore = defineStore("userStore", {
 
         const dataLogin = await loginResp.json();
 
-        if (!loginResp.ok) throw new Error(dataLogin.error);
+        if (!loginResp.ok) throw new Error(loginResp.body + "");
 
         this.setUser(dataLogin);
         this.setToken(dataLogin.token);
