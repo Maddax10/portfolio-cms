@@ -4,11 +4,13 @@
 @use "index";
 @use "navbar";
 @use "./login";
-@use "./projects/project";
-@use "./projects/projectC";
+@use "./projects/projects";
+@use "./projects/_editProject";
+@use "./projects/minimalProject.scss";
 @use "./modals/modals.scss";
 @use "./modals/m-projects.scss";
 @use "./skills/skilss.scss";
+
 .images {
   &__items {
     padding: 20px;
@@ -17,6 +19,11 @@
     align-items: center;
     gap: 20px;
     flex-flow: row wrap;
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-color: $sunrise $OP_white_10;
+    scrollbar-gutter: stable;
   }
   &__item {
     border: 2px solid $OP_white_70;

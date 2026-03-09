@@ -9,7 +9,7 @@
   //[END] linear-gradient sur texte
 }
 
-@mixin button($color) {
+@mixin button($color, $hoverColor) {
   background-color: $color;
   border-radius: 16px;
   corner-shape: squircle;
@@ -19,10 +19,14 @@
   border: none;
   font-size: 20px;
   font-weight: 800;
+  color: $hoverColor;
   cursor: pointer;
+  box-shadow: 0 0 5px 1px $black;
+  transition: all $transitionTime ease-out;
   &:hover {
-    background-color: $L_black_5;
-    color: $sunrise;
-    box-shadow: 0 0 0 1px $sunrise;
+    background-color: $hoverColor;
+    color: $color;
+    box-shadow: none;
+    transition: all $transitionTime ease-out;
   }
 }

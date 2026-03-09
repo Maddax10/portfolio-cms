@@ -15,7 +15,10 @@
 
     });
     const emits = defineEmits<
-        { (e: "messageNotif", message: string, error: boolean): void }
+        {
+            (e: "messageNotif", message: string, error: boolean): void,
+            (e: "closeEditProject"): void
+        }
     >()
 
     const projectsStore = useProjectsStore();
@@ -66,6 +69,8 @@
             currentSkills.value = updatedProject.skills;
 
             showUpdateNotification(`Projet \'${updatedProject.title}\' mis à jour !`);
+            emits("closeEditProject")
+
         } catch (e: Error | unknown) {
             showErrorNotification(`Erreur lors de la mise à jour !`)
             console.error(e)
@@ -76,50 +81,55 @@
         image_path.value = path;
 
     }
+
+    const closeEditProject = () => {
+        emits("closeEditProject")
+    }
 </script>
 
 <template>
+    <div class="background" @click="closeEditProject"></div>
     <TransitionGroup name="fade">
 
-        <div class="projectCard">
-            <div class="projectCard__imageSection">
-                <div class="projectCard__titleCard">{{ title }}</div>
-                <img class="projectCard__image" :src=image_path :alt=imgAlt />
+        <div class="editProject">
+            <div class="editProject__imageSection">
+                <div class="editProject__titleCard">{{ title }}</div>
+                <img class="editProject__image" :src=image_path :alt=imgAlt />
             </div>
-            <div class="projectCard__infos">
+            <div class="editProject__infos">
                 <!--Titre-->
-                <div class="projectCard__section">
-                    <div class="projectCard__title">Titre</div>
-                    <input class="projectCard__input" type="text" v-model="title" />
+                <div class="editProject__section">
+                    <div class="editProject__title">Titre</div>
+                    <input class="editProject__input" type="text" v-model="title" />
                 </div>
 
                 <!--Description-->
-                <div class="projectCard__section">
-                    <div class="projectCard__title">Description</div>
-                    <textarea class="projectCard__textarea" v-model="description" />
+                <div class="editProject__section">
+                    <div class="editProject__title">Description</div>
+                    <textarea class="editProject__textarea" v-model="description" />
                 </div>
 
                 <!--Lien github-->
-                <div class="projectCard__section">
-                    <div class="projectCard__title">Lien github</div>
-                    <input class="projectCard__input" type="text" v-model="github" />
+                <div class="editProject__section">
+                    <div class="editProject__title">Lien github</div>
+                    <input class="editProject__input" type="text" v-model="github" />
                 </div>
 
                 <!--Skills-->
 
-                <div class="projectCard__section">
-                    <div class="projectCard__title">Skills</div>
-                    <div class="projectCard__skills">
+                <div class="editProject__section">
+                    <div class="editProject__title">Skills</div>
+                    <div class="editProject__skills">
                         <ProjectSkills :currentSkills="currentSkills" />
                     </div>
                 </div>
-                <div class="projectCard__section">
-                    <!-- <div class="projectCard__title">Lien de l'image</div>
-                <input class="projectCard__input" type="text" v-model="imgSrc" /> -->
+                <div class="editProject__section">
+                    <!-- <div class="editProject__title">Lien de l'image</div>
+                <input class="editProject__input" type="text" v-model="imgSrc" /> -->
                     <ProjectImage @selectImage="selectImage"></ProjectImage>
                 </div>
             </div>
-            <button class="projectCard__sendButton" @click.prevent="modifyProject">Modifier le projet</button>
+            <button class="editProject__sendButton" @click.prevent="modifyProject">Modifier le projet</button>
         </div>
     </TransitionGroup>
 </template>

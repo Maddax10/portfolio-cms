@@ -1,4 +1,5 @@
 @use "./_variables" as *;
+@import "./mixin.scss";
 .navbar {
   position: fixed;
   top: 0;
@@ -18,15 +19,10 @@
     padding: 16px;
   }
   &__link {
-    background: linear-gradient(135deg, $OP_black_30, $OP_black_70);
-
-    font-weight: 900;
-    color: $sunrise;
-    padding: 16px 12px;
-    corner-shape: squircle;
+    @include button($red, $black);
+    color: $black;
     &:hover {
-      color: black;
-      background: linear-gradient(135deg, $OP_red_30, $red);
+      box-shadow: none;
     }
   }
 }

@@ -4,10 +4,12 @@
   import { useProjectsStore } from "@/stores/projects";
   import { useRouter } from "vue-router";
   import NotificationComponent from "@/components/NotificationComponent.vue"
-  import { ref } from "vue";
+  import { ref, type Ref } from "vue";
   import AddProjectModal from "@/components/modals/AddProjectModal.vue";
   import { useSkillsStore } from "@/stores/skills";
-  import ProjectComponent from "@/components/ProjectComponent.vue";
+  import MinimalProject from "@/components/MinimalProject.vue";
+  import type { Project } from "@/models/Project";
+  import EditProject from "@/components/EditProject.vue";
 
   const router = useRouter();
   const userStore = useUserStore();
@@ -41,6 +43,8 @@
   //#endregion Notifications
 
   const isAddProject = ref(false)
+  const isEditProject = ref(false)
+  let editProject: Project;
   const addProject = () => {
     toggleAddProjectModal();
     // showModalAddProject();
@@ -52,9 +56,21 @@
 
   }
 
+  const showEditProject = (project: Project) => {
+    console.log("edit project ", project)
+    editProject = project
+    isEditProject.value = !isEditProject.value
+  }
+
+  const closeEditProject = () => {
+    isEditProject.value = false;
+  }
+
 </script>
 
 <template>
+  <EditProject v-if="isEditProject" :project="editProject" @messageNotif="MessageNotif"
+    @closeEditProject="closeEditProject" />
 
   <div class="projects">
     <Transition name="fade">
@@ -62,12 +78,11 @@
       </AddProjectModal>
     </Transition>
     <div class="projects__title">Manage projects</div>
-    <button type="button" class="navbar__addProject" @click.prevent="addProject">Ajouter</button>
+    <button type="button" class="projects__add button" @click.prevent="addProject">Ajouter</button>
     <div class="projects__list">
 
-      <ProjectComponent></ProjectComponent>
-      <ProjectC v-for="(project, key) in projectsStore.projects" :key="key" :project="project"
-        @messageNotif="MessageNotif" />
+      <MinimalProject v-for="(project, key) in projectsStore.projects" :key="key" :project="project"
+        @editProject="showEditProject"></MinimalProject>
       <NotificationComponent v-if="projectsStore.isNotification" :message="messageNotif" :error="errorNotif">
       </NotificationComponent>
 

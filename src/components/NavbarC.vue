@@ -11,7 +11,7 @@
 <template>
   <nav class="navbar" v-if="loginStore.getToken !== null">
     <div class="navbar__role">{{ loginStore.getUser?.role }}</div>
-    <router-link class="navbar__link button" to="/" @click.prevent="logout">disconnect</router-link>
+    <router-link class="navbar__link button" to="/" @click.prevent="logout">Log out</router-link>
   </nav>
 </template>
 
