@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import type { Project } from '@/models/Project';
-    import { ref, type PropType, type Ref } from 'vue';
+    import { computed, type PropType } from 'vue';
 
     const props = defineProps({
         project: {
@@ -14,7 +14,7 @@
 
     >();
 
-    const title: Ref<string> = ref(props.project.title);
+    const title = computed(() => props.project.title);
 
     const showModify = () => {
         //implement

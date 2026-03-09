@@ -33,8 +33,7 @@
             await projectsStore.createProject(project)
             showUpdateNotification(`Projet \'${project.title}\' créé !`);
         } catch (error) {
-            showErrorNotification('Erreur lors de la création !')
-            throw error;
+            showErrorNotification('Erreur lors de la création : ' + error)
         }
 
     }

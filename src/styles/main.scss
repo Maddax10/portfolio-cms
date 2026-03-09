@@ -1,15 +1,16 @@
-@use "_variables" as *;
+@use "./_variables" as *;
 
-@use "normalize";
-@use "index";
-@use "navbar";
+@use "./normalize";
+@use "./index";
+@use "./navbar";
 @use "./login";
-@use "./projects/projects";
+@use "./projects/_projects";
 @use "./projects/_editProject";
-@use "./projects/minimalProject.scss";
+@use "./projects/_minimalProject.scss";
 @use "./modals/modals.scss";
 @use "./modals/m-projects.scss";
-@use "./skills/skilss.scss";
+@use "./skills/skills.scss";
+@use "./notifications";
 
 .images {
   &__items {
@@ -47,7 +48,7 @@
     background-color: red;
   }
 }
-.images:clic .fade-enter-active {
+.images .fade-enter-active {
   transition:
     opacity 300ms ease-out,
     transform 300ms ease-out;

@@ -35,7 +35,7 @@
         <label for="" class="login__title">Login</label>
         <label for="" class="login__description">Accède à ton espace de gestion</label>
         <label for="" class="login__label">Email</label>
-        <input type="mail" class="login__input" v-model="mail" />
+        <input type="email" class="login__input" v-model="mail" />
         <label for="" class="login__label">Password</label>
         <input type="password" class="login__input" v-model="password" />
         <button class="login__button" @click.prevent="login">Se connecter</button>

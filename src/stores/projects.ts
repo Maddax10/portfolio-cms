@@ -44,6 +44,7 @@ export const useProjectsStore = defineStore("projectsStore", {
         if (!resp.ok) throw new Error("Something went wrong after update");
 
         const projectUpdated = await resp.json();
+        this.initProjects();
         return projectUpdated;
       } catch (error) {
         throw error;
@@ -64,6 +65,7 @@ export const useProjectsStore = defineStore("projectsStore", {
 
         const createdProject = await resp.json();
 
+        this.initProjects();
         return createdProject;
       } catch (error) {
         throw error;

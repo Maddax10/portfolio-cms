@@ -31,7 +31,7 @@
             <button class="images__add" @click="showAddImage">+</button>
             <AddImageModal v-if="isShowAddModal"></AddImageModal>
             <div class="images__items">
-                <img class="images__item" v-for="path, key in imagesStore.images" :key="key" :src="path"
+                <img class="images__item" v-for="(path, key) in imagesStore.images" :key="key" :src="path"
                     @click="selectImagePath(path)">
             </div>
         </div>

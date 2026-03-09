@@ -8,8 +8,8 @@
             required: true,
         }
     })
-
-    const allSkills = useSkillsStore().skills;
+    const skillsStore = useSkillsStore();
+    const allSkills = skillsStore.skills;
     const currentSkills = ref(props.currentSkills)
 
     //Différence entre tous les skills et les currentSkills

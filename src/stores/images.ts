@@ -5,7 +5,7 @@ import { API_FINAL_URL } from "@/config/config";
  */
 export const useImagesStore = defineStore("imagesStore", {
   state: () => ({
-    images: null as string[] | null,
+    images: [] as string[],
     loading: false as boolean,
   }),
   getters: {},

@@ -17,7 +17,7 @@
     const emits = defineEmits<
         {
             (e: "messageNotif", message: string, error: boolean): void,
-            (e: "closeEditProject"): void
+            (e: "closeEditProject", isDataUpdated: boolean): void
         }
     >()
 
@@ -69,7 +69,7 @@
             currentSkills.value = updatedProject.skills;
 
             showUpdateNotification(`Projet \'${updatedProject.title}\' mis à jour !`);
-            emits("closeEditProject")
+            emits("closeEditProject", true)
 
         } catch (e: Error | unknown) {
             showErrorNotification(`Erreur lors de la mise à jour !`)
@@ -83,7 +83,7 @@
     }
 
     const closeEditProject = () => {
-        emits("closeEditProject")
+        emits("closeEditProject", false)
     }
 </script>
 
