@@ -33,8 +33,8 @@
     <div class="project">
         <span class="project__title">{{ title }}</span>
         <div class="project__actions">
-            <button class="project__actions__modify button" @click="showModify"></button>
-            <button class="project__actions__delete button" @click="deleteProject"></button>
+            <button class="project__actions__modify button" aria-label="modifier" @click="showModify"></button>
+            <button class="project__actions__delete button" aria-label="supprimer" @click="deleteProject"></button>
         </div>
 
     </div>

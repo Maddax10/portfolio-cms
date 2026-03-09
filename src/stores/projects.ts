@@ -18,6 +18,7 @@ export const useProjectsStore = defineStore("projectsStore", {
       try {
         const projectsResp = await fetch(`${API_FINAL_URL}/projects/all`);
 
+        if (!projectsResp.ok) throw new Error("Something went wrong during init");
         const projectsData = await projectsResp.json();
 
         console.log(projectsData);

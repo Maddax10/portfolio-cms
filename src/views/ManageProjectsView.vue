@@ -72,8 +72,8 @@
 </script>
 
 <template>
-  <EditProject v-if="isEditProject" :project="(editProject) as Project" @messageNotif="MessageNotif"
-    @closeEditProject="closeEditProject" />
+  <EditProject v-if="isEditProject && editProject" :project="(editProject) as Project" @messageNotif="MessageNotif"
+    @closeEditProject="closeEditProject"></EditProject>
 
   <div class="projects">
     <Transition name="fade">

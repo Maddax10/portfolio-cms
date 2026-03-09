@@ -91,7 +91,7 @@
     <div class="background" @click="closeEditProject"></div>
     <TransitionGroup name="fade">
 
-        <div class="editProject">
+        <div class="editProject" :key="id">
             <div class="editProject__imageSection">
                 <div class="editProject__titleCard">{{ title }}</div>
                 <img class="editProject__image" :src=image_path :alt=imgAlt />
@@ -129,7 +129,8 @@
                     <ProjectImage @selectImage="selectImage"></ProjectImage>
                 </div>
             </div>
-            <button class="editProject__sendButton" @click.prevent="modifyProject">Modifier le projet</button>
+            <button class="editProject__sendButton" aria-label="modifier" @click.prevent="modifyProject">Modifier le
+                projet</button>
         </div>
     </TransitionGroup>
 </template>

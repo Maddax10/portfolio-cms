@@ -49,8 +49,6 @@
         background-color: currentColor; // prend la couleur du parent
         -webkit-mask: url("/logos/delete.svg") no-repeat center / contain;
         mask: url("/logos/delete.svg") no-repeat center / contain;
-        &:hover {
-        }
       }
     }
   }

@@ -6,7 +6,7 @@
         <input type="text" class="login__inputs">
         <label for="" class="login__label">Password</label>
         <input type="text" class="login__inputs">
-        <button class="login__button">Se connecter</button>
+        <button class="login__button" aria-label="se connecter">Se connecter</button>
     </form>
 </template>
 

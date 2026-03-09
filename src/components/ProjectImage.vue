@@ -26,7 +26,7 @@
 <template>
     <TransitionGroup name="fade">
 
-        <button class="images" @click="showImages">Sélectionner une image</button>
+        <button class="images" aria-label="sélectionner une image" @click="showImages">Sélectionner une image</button>
         <div class="images__show" v-if="isShowImages">
             <button class="images__add" @click="showAddImage">+</button>
             <AddImageModal v-if="isShowAddModal"></AddImageModal>

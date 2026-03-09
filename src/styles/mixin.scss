@@ -1,4 +1,4 @@
-@use "variables" as *;
+@use "./_variables" as *;
 @mixin gradient-text($color1, $color2) {
   //[START] linear-gradient sur texte
   background: linear-gradient(135deg, $color1, $color2);

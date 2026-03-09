@@ -47,13 +47,14 @@
     <div class="skills">
         <div class="skills__currents">
             <img class="skills__item" v-for="(skill, key) in currentSkills" :key="key" :src="skill.image_path"
-                :alt=skill.name @click="removeSkill(key)">
+                :alt="skill.name" @click="removeSkill(key)" aria-label="supprimer un skill">
         </div>
-        <button class="skills__addBtn" @click.prevent="openAvailableSkills">+</button>
+        <button class="skills__addBtn" aria-label="ouvrir la list des skills"
+            @click.prevent="openAvailableSkills">+</button>
 
         <div class="skills__availables" v-if="isSkillAddClick">
             <img class="skills__item" v-for="(skill, key) in availableSkills" :key="key" :src="skill.image_path"
-                @click="addSkill(skill)">
+                @click="addSkill(skill)" aria-label="ajouter un skill">
         </div>
     </div>
 </template>
