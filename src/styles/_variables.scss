@@ -2,8 +2,26 @@
 
 $black: black;
 $white: white;
-$red: red;
-$sunrise: #ffa600;
+$red: #b3261e;
+$sunrise-red: #ed6d1d;
+$sunrise: #eda51d;
+$card-background: #202020;
+$textbox-background: #404040;
+
+$background-top: #333333;
+$background-bottom: #242424;
+
+$text-color: white;
+
+$font-size-32: 32px;
+$font-size-20: 20px;
+$font-size-16: 16px;
+$font-size-12: 12px;
+
+$padding-card: 20px;
+$border-radius-card: 20px;
+$border-radius-card-item: 12px;
+
 //Lighter Black
 $L_black_5: color.adjust($black, $lightness: 5%);
 $L_black_10: color.adjust($black, $lightness: 10%);
@@ -82,6 +100,7 @@ $OP_sunrise_70: color.scale($sunrise, $alpha: -70%);
 $OP_sunrise_80: color.scale($sunrise, $alpha: -80%);
 $OP_sunrise_90: color.scale($sunrise, $alpha: -90%);
 
+$shadow: $OP_black_60;
 $transitionTime: 0.3s;
 $doubleTransitionTime: calc($transitionTime * 2);
 $mobile: 800px;

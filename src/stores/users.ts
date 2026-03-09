@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import { API_URL } from "@/config/config";
+import { API_FINAL_URL } from "@/config/config";
 import type { User } from "@/models/User.ts";
 
-export const useUsersStore = defineStore("usersStore", {
+export const useUserStore = defineStore("userStore", {
   state: () => ({
     token: null as string | null,
     user: null as User | null,
@@ -21,11 +21,11 @@ export const useUsersStore = defineStore("usersStore", {
     setUser(user: User | null) {
       this.user = user;
     },
+
     async login(credentials: { mail: string; password: string }) {
       this.loading = true;
       try {
-        // Remplace ce bloc par l'appel API réel
-        const loginResp = await fetch(`${API_URL}/users/login`, {
+        const loginResp = await fetch(`${API_FINAL_URL}/users/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(credentials),
@@ -33,7 +33,7 @@ export const useUsersStore = defineStore("usersStore", {
 
         const dataLogin = await loginResp.json();
 
-        if (!loginResp.ok) throw new Error(dataLogin.error);
+        if (!loginResp.ok) throw new Error(loginResp.body + "");
 
         this.setUser(dataLogin);
         this.setToken(dataLogin.token);
@@ -59,7 +59,7 @@ export const useUsersStore = defineStore("usersStore", {
 
       this.token = token;
 
-      const meResp = await fetch(`${API_URL}/users/me`, {
+      const meResp = await fetch(`${API_FINAL_URL}/users/me`, {
         method: "GET",
         headers: {
           Authorization: "Bearer " + token,

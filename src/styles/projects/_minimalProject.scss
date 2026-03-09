@@ -1,0 +1,55 @@
+@use "../_variables" as *;
+@import "../mixin.scss";
+
+.project {
+  background-color: $card-background;
+  color: $sunrise;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $padding-card;
+  border-radius: $border-radius-card;
+  box-shadow: 0 0 10px $OP_black_50;
+  &:hover {
+    box-shadow: 0 0 0 1px $sunrise;
+  }
+  &__title {
+    font-weight: 600;
+    font-size: $font-size-20;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+  }
+  &__actions {
+    display: flex;
+    gap: 10px;
+    &__modify {
+      padding: 6px;
+
+      &::before {
+        content: "";
+        display: flex;
+        width: 24px;
+        height: 24px;
+        background-color: currentColor; // prend la couleur du parent
+        -webkit-mask: url("/logos/edit.svg") no-repeat center / contain;
+        mask: url("/logos/edit.svg") no-repeat center / contain;
+      }
+    }
+    &__delete {
+      background-color: $red;
+      padding: 6px;
+      &::before {
+        content: "";
+        display: flex;
+        width: 24px;
+        height: 24px;
+        background-color: currentColor; // prend la couleur du parent
+        -webkit-mask: url("/logos/delete.svg") no-repeat center / contain;
+        mask: url("/logos/delete.svg") no-repeat center / contain;
+      }
+    }
+  }
+}

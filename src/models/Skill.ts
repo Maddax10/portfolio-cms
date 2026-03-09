@@ -1,5 +1,5 @@
 export type Skill = {
-  id: Number;
+  id: number;
   image_path: string;
   name: string;
 };

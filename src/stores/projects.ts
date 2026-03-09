@@ -1,11 +1,13 @@
 import { defineStore } from "pinia";
-import { API_URL } from "@/config/config";
+import { API_FINAL_URL } from "@/config/config";
 import type { Project } from "@/models/Project.ts";
+import { useUserStore } from "./users";
 
 export const useProjectsStore = defineStore("projectsStore", {
   state: () => ({
-    projects: null as Project[] | null,
-    loading: false as Boolean,
+    projects: [] as Project[],
+    loading: false as boolean,
+    isNotification: false as boolean,
   }),
   getters: {},
   actions: {
@@ -14,14 +16,61 @@ export const useProjectsStore = defineStore("projectsStore", {
     },
     async initProjects() {
       try {
-        const projectsResp = await fetch(`${API_URL}/projects/all`);
+        const projectsResp = await fetch(`${API_FINAL_URL}/projects/all`);
 
+        if (!projectsResp.ok)
+          throw new Error("Something went wrong during init" + projectsResp.body);
         const projectsData = await projectsResp.json();
 
         console.log(projectsData);
         this.setProjects(projectsData);
-      } catch (e) {
-        throw e;
+      } catch (error) {
+        throw error;
+      }
+    },
+    setNotification(status: boolean) {
+      this.isNotification = status;
+    },
+    async updateProject(project: Project): Promise<Project> {
+      const userStore = useUserStore();
+      try {
+        const resp = await fetch(`${API_FINAL_URL}/projects/update`, {
+          method: "PUT",
+          body: JSON.stringify(project),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + userStore.token,
+          },
+        });
+
+        if (!resp.ok) throw new Error("Something went wrong after update" + resp.body);
+
+        const projectUpdated = await resp.json();
+        await this.initProjects();
+        return projectUpdated;
+      } catch (error) {
+        throw error;
+      }
+    },
+    async createProject(project: Project): Promise<Project> {
+      const userStore = useUserStore();
+      try {
+        const resp = await fetch(`${API_FINAL_URL}/projects/create`, {
+          method: "POST",
+          body: JSON.stringify(project),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + userStore.token,
+          },
+        });
+        if (!resp.ok) throw new Error("Something went wrong after create : " + resp.body);
+
+        const createdProject = await resp.json();
+
+        await this.initProjects();
+        return createdProject;
+      } catch (error) {
+        throw error;
       }
     },
   },

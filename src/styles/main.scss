@@ -1,6 +1,71 @@
-@use "normalize";
-@use "index";
-@use "navbar";
-@use "./login";
-@use "./projects/project";
-@use "./projects/projectC";
+@use "./_variables" as *;
+
+@use "./_normalize";
+@use "./_index";
+@use "./_navbar";
+@use "./_login";
+@use "./projects/_projects";
+@use "./projects/_editProject";
+@use "./projects/_minimalProject.scss";
+@use "./modals/_modals.scss";
+@use "./modals/_m-projects.scss";
+@use "./skills/_skills.scss";
+@use "./notifications";
+
+.images {
+  &__items {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-flow: row wrap;
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-color: $sunrise transparent;
+    scrollbar-gutter: stable;
+  }
+  &__item {
+    border: 2px solid $OP_white_70;
+    border-radius: 16px;
+    corner-shape: squircle;
+    cursor: pointer;
+    max-width: 300px;
+    width: 100%;
+    height: fit-content;
+    transition: all $transitionTime ease-out;
+    &:hover {
+      border: 2px solid $OP_sunrise_20;
+      border-radius: 16px;
+      corner-shape: squircle;
+    }
+    &:active {
+      border-color: $sunrise;
+    }
+  }
+  &__addModal {
+    background-color: red;
+  }
+}
+.images,
+.fade-enter-active {
+  position: absolute;
+  transition:
+    opacity 300ms ease-out,
+    transform 300ms ease-out;
+}
+.fade-leave-active {
+  transition:
+    opacity 200ms ease-out,
+    transform 200ms ease-out;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  // transform: translateY(6px);
+}
+
+.fade-move {
+  transition: transform 180ms ease;
+}

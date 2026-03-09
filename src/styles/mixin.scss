@@ -1,0 +1,32 @@
+@use "./_variables" as *;
+@mixin gradient-text($color1, $color2) {
+  //[START] linear-gradient sur texte
+  background: linear-gradient(135deg, $color1, $color2);
+  -webkit-background-clip: text; /* Safari/Chrome */
+  background-clip: text; /* Standard */
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  //[END] linear-gradient sur texte
+}
+
+@mixin button($color, $hoverColor) {
+  background-color: $color;
+  border-radius: 16px;
+  corner-shape: squircle;
+  width: fit-content;
+  padding: 12px 16px;
+  align-self: center;
+  border: none;
+  font-size: 20px;
+  font-weight: 800;
+  color: $hoverColor;
+  cursor: pointer;
+  box-shadow: 0 0 5px 1px $black;
+  transition: all $transitionTime ease-out;
+  &:hover {
+    background-color: $hoverColor;
+    color: $color;
+    box-shadow: none;
+    transition: all $transitionTime ease-out;
+  }
+}

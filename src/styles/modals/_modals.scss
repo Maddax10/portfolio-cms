@@ -1,0 +1,46 @@
+@use "../_variables" as *;
+@import "../mixin.scss";
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  backdrop-filter: blur(8px);
+  background-color: $OP_black_40;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 4000;
+  top: 0;
+  left: 0;
+
+  &__card {
+    display: flex;
+    background-color: $L_black_15;
+    max-width: 1200px;
+    width: 90%;
+    height: fit-content;
+    border-radius: 16px;
+    corner-shape: squircle;
+    flex-flow: wrap column;
+    overflow: hidden;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(135deg, $sunrise, $sunrise-red);
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  &__title {
+    @include gradient-text($black, $OP_black_30);
+    font-weight: 800;
+    font-size: 24px;
+    padding: 12px;
+  }
+}
